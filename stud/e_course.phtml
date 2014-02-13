@@ -1,0 +1,26 @@
+<h1>
+<br>    
+
+<?php require 'dbconnect.php';
+$id =$_SESSION['id'];
+$query  =   "
+                SELECT *
+                FROM enrolled_details
+                WHERE id_no = '$id'
+            ";
+$result =   mysql_query($query) or die (mysql_error());
+echo $id."<h1>is enrolled for<br></h1>";
+echo "<table border=1><tr><td><h3>course_id</h3></td></tr>";
+while($row= mysql_fetch_array($result))
+ {
+		//$_SESSION['c_id']=$row['course_id'];
+		echo "<tr><td>".$row['course_id']."</td></tr>";
+			
+}
+echo "</table>";
+
+?>
+</h1>
+<ul class="p">
+   
+</ul>

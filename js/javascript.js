@@ -126,6 +126,26 @@ function show1 (a )
        
       
 }
+
+function show_registered_courses() {
+     
+    course_canvas1=document.getElementById("course_canvas1");
+    if(flag==0)
+    {
+        var url = "listener2.php?action=show_registered_courses";
+        req = initRequest();
+        req.open("GET", url, true);
+        req.onreadystatechange = callback2;
+        req.send(null);
+        flag=1;
+    }
+    else
+    {
+        flag=0;
+        remove_elements(course_canvas1);
+    }
+         
+}
       
 
 
@@ -207,6 +227,57 @@ function parseMessages(responseXML) {
                 linkElement = document.createElement("a");
                 linkElement.appendChild(document.createTextNode(course_name));
                 linkElement.setAttribute("href", "facindex.php?page=course_sel&id="+course_id);
+                // linkElement.setAttribute("onclick", "show_selected(this)");
+                course_canvas.appendChild(linkElement);
+                linkElement = document.createElement("br"); 
+                course_canvas.appendChild(linkElement);
+                    
+                    
+                   
+            }
+        }
+    }
+       
+}
+
+
+function callback2() {
+ 
+
+    if (req.readyState == 4) {
+        if (req.status == 200) {
+          
+            parseMessages2(req.responseXML);
+        }
+    }
+    
+}
+
+function parseMessages2(responseXML) {
+
+    // no matches returned
+   
+    if (responseXML == null) {
+         
+        return false;
+        
+    } else {
+        var courses = responseXML.getElementsByTagName("courses")[0];
+ 
+        if (courses.childNodes.length > 0) {
+               
+            for (loop = 0; loop < courses.childNodes.length; loop++) {
+                    
+                var course = courses.childNodes[loop];
+                    
+                //var course_name = course.getElementsByTagName("course_name")[0].childNodes[0].nodeValue;
+                   
+                var course_id = course.getElementsByTagName("course_id")[0].childNodes[0].nodeValue;
+                     
+                    
+                linkElement = document.createElement("a");
+                linkElement.appendChild(document.createTextNode(course_id));
+                linkElement.setAttribute("href", "studindex.php?page=course_sel&id="+course_id);
                 // linkElement.setAttribute("onclick", "show_selected(this)");
                 course_canvas.appendChild(linkElement);
                 linkElement = document.createElement("br"); 

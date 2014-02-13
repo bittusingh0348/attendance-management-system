@@ -1,0 +1,63 @@
+<?php
+if(!isset($_SESSION['started']) ||  ($_SESSION['loginas'] != 'Student'))
+{
+    header('Location:index.php');
+}
+if(isset($_GET['logout']) && $_GET['logout']=1 )
+{
+    unset($_SESSION['started']);
+    header('Location:index.php');
+}
+?>
+
+<html>
+    <head>
+        <title>Attendance Management System</title>
+        <link type="text/css" href="css/redmond/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <link href="css/layout.css" rel="stylesheet" type="text/css" />
+
+        <script type="text/javascript" src="js/javascript.js"></script>
+
+        <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+
+        <script type="text/javascript" src="js/jquery-ui-1.8.16.custom.min.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+
+        <link href="css/timePicker.css" rel="stylesheet" type="text/css" />
+
+        <script type="text/javascript" src="js/jquery.timePicker.js"></script>
+       
+
+    </head>
+    <body id="page">
+        <div class="tail-top-right"></div>
+        <div id="header">
+            <br> <br> <br><br><br><br><center>Attendance Management System</center>
+        </div>
+        
+        <div id="content">
+            
+            <div class="wrapper">
+                <div class="col-1">
+                    <div class="box">
+                        <a href="studindex.php?page=studhome"> Home </a> 
+                        <br>
+                        <a href="studindex.php?page=e_course">Enrolled_Courses </a>
+                         <br>
+						 <a href="studindex.php?page=atten_d">AllCourses_atten </a>
+                        <a href="facindex.php?page=fachome&logout=1"> Logout </a>
+                        <br>
+                    </div>
+                </div>
+
+
+                <div class="col-2">
+                    <?php
+                    require $template;
+                    ?>
+                </div>
+            </div>
+        </div>
+    </body>
+    <html>

@@ -37,6 +37,7 @@
                                 <label>Login as </label> <select name="loginas" size="1">
                                     <option> Admin </option>
                                     <option> Faculty </option>
+									<option>Student</option>
                                 </select>
                                 <br />
                             </div>

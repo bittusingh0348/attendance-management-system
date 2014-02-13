@@ -1,0 +1,24 @@
+<h1>
+<br>    
+Welcome
+<?php require 'dbconnect.php';
+
+    $stud_id   =$`_SESSION['id']; 
+    $query      =     
+                "
+                SELECT course_id
+                FROM enrolled_details
+                WHERE id_no = '$stud_id' 
+                ";
+    $result     = mysql_query($query) or die(mysql_errno());
+    
+     while($row= mysql_fetch_array($result))
+	   {
+	     echo $row['course_id'];
+		 }
+	
+?>
+</h1>
+<ul class="p">
+   
+</ul>

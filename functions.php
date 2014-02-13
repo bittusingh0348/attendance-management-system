@@ -658,7 +658,7 @@ function db_connect() {
     $host = "localhost";
     $user = "root";
     $pass = "";
-    $db = "new_fpa";
+    $db = "atten_fing";
     $con = mysqli_connect($host, $user, $pass, $db);
 
     if (mysqli_connect_errno()) 
